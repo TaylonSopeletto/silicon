@@ -1,0 +1,14 @@
+<div class="bread-crumb">
+    <a>home</a>
+    
+    {% if category1 %}
+    <p>/</p>
+    <a>{{category1}}</a>
+    {% endif %}
+    {% if product %}
+    <p>/</p>
+    <p>product</p>
+    <p>/</p>
+    <a>{{product}}</a>
+    {% endif %}
+</div>
