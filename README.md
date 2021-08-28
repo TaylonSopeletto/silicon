@@ -2,6 +2,9 @@
 
 A store made in python using django framework
 
+# Hosted on Heroku
+https://ambra-store.herokuapp.com/
+
 ## Installation
 
 ```console
