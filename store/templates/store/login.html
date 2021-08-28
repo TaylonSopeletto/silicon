@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     {% load static %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" />
     <title>Login</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' now 'U' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'public/css/app.css' now 'U' %}">
 </head>
+
 <body>
     <form class="login" action="/authentication" method="post">{% csrf_token %}
         <a href="/" class="logo">
@@ -32,8 +36,9 @@
         </div>
 
         <p class="no-account">Do not have an account? <a href="/register_page">click here</a> to create one</p>
-        
+
     </form>
-    <script src="{% static 'dist/main.bundle.js' %}"></script>
+
 </body>
+
 </html>

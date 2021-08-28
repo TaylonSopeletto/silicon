@@ -9,6 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'public/css/app.css' now 'U' %}">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
@@ -24,7 +25,7 @@
     </div>
     <div class="product-container">
         <div class="image">
-            <img src={{product.image_url}} />
+            <img alt={{product.name}} src={{product.image_url}} />
         </div>
         <div class="details">
             <h2 class="title">{{product.name}}</h2>
@@ -38,7 +39,7 @@
         </div>
     </div>
     {{ product_json|json_script:"product_data" }}
-    <script src="{% static 'dist/main.bundle.js' %}"></script>
+
 </body>
 
 </html>
