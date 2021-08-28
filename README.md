@@ -1,5 +1,5 @@
 # Store
-update asdsa
+
 A store made in python using django framework
 
 ## Installation
