@@ -1,13 +1,14 @@
-import './sass/style.scss';
+
 
 const urlParams = new URLSearchParams(window.location.search)
 const currentParam = urlParams.get('order')
 
 const button = document.getElementById('price')
 
-if (button) {
-    button.addEventListener('click', () => {
 
+if (button) {
+
+    button.addEventListener('click', () => {
         setFilter(button.value)
     })
 
@@ -16,6 +17,7 @@ if (button) {
 }
 
 const setFilter = (value) => {
+
     const urlParams = new URLSearchParams(window.location.search)
     const currentParam = urlParams.get('order')
 
@@ -29,17 +31,6 @@ const setFilter = (value) => {
 
 }
 
-/* add product to card */
-
-const rawProduct = JSON.parse(document.getElementById('product_data')?.textContent);
-const jsonProduct = JSON.parse(rawProduct)
-
-const addProductButton = document.getElementById('addProductButton')
-const removeProductButton = document.getElementById('removeProductButton')
-
-addProductButton.addEventListener('click', () => {
-    window.location.href = `/add_product?id=${jsonProduct[0].pk}`
-})
 
 
 

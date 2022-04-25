@@ -13,6 +13,7 @@ import environ
 env = environ.Env()
 environ.Env.read_env()
 
+
 stripe.api_key = env('STRIPE_API_KEY')
 
 YOUR_DOMAIN = 'http://127.0.0.1:8000'
@@ -118,11 +119,12 @@ def cart(request):
         'products': products
     }
     template = loader.get_template('store/cart.html')
+    empty_template = loader.get_template('store/empty_cart.html')
 
     if products:
         return HttpResponse(template.render(context, request))
     else:
-        return redirect('/')
+        return HttpResponse(empty_template.render(context, request))
 
 def checkout(request):
     cart = Cart.objects.get(owner=request.user.id)
@@ -158,10 +160,6 @@ def create(request):
         currency='brl',
         )
 
-        
-
-        print(cart.total_price())
-
         checkout_session = stripe.checkout.Session.create(
             line_items=[
                 {
@@ -189,10 +187,10 @@ def index(request):
     o = 'name'
     order = request.GET.get('order', None)
     if order == 'price_asc':
-        o = '-price'
+        o = 'price'
 
     if order == 'price_desc':
-        o = 'price'
+        o = '-price'
 
     f = {}
     base_category = request.GET.get('base_category', None)

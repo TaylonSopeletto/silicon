@@ -24,6 +24,13 @@ header .logo i {
 header .cart {
   position: relative;
 }
+header .cart a {
+  text-decoration: none;
+  color: white;
+}
+header .cart a:hover {
+  color: #a9a1d1;
+}
 header .cart h3 {
   color: #202A25;
   font-weight: bold;
@@ -100,15 +107,28 @@ header .profile button:hover {
 header .search-bar {
   position: relative;
   display: flex;
+  align-items: center;
   gap: 10px;
   background-color: #EDEDED;
-  padding: 14px 14px;
   width: 400px;
+}
+header .search-bar button {
+  border: none;
+  height: 100%;
+  padding: 14px;
+  background-color: #a298cf;
+  font-weight: bold;
+}
+header .search-bar button:hover {
+  cursor: pointer;
+  background-color: #241a53;
+  color: white;
 }
 header .search-bar input {
   outline: none;
   border: none;
   background-color: #EDEDED;
+  width: 100%;
 }
 header .search-bar input:focus + .list {
   visibility: visible;
@@ -132,7 +152,7 @@ header .search-bar .list li:hover {
   cursor: pointer;
 }
 header .search-bar i {
-  padding: 0;
+  padding: 10px;
   margin: 0;
   color: #BFBFBF;
 }
@@ -143,6 +163,15 @@ header .search-bar i {
   height: 60px;
   padding: 0 100px;
   background-color: #5F4BB6;
+  gap: 40px;
+}
+.categories a {
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+}
+.categories a:hover {
+  color: #a9a1d1;
 }
 .categories button {
   height: 100%;
@@ -159,6 +188,72 @@ header .search-bar i {
   height: 100%;
   border: none;
   color: white;
+}
+
+/* product details */
+.product-container {
+  display: flex;
+  gap: 60px;
+  padding: 0 100px;
+}
+
+.product-container .image {
+  width: 40%;
+  height: 500px;
+  border: 1px solid #ddd;
+}
+
+.product-container .image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.product-container .details {
+  margin-top: 80px;
+  margin-bottom: 80px;
+  color: #202A25;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.product-container .details .title {
+  font-size: 32px;
+}
+
+.product-container .details button {
+  align-self: flex-end;
+  margin-top: auto;
+  justify-self: end;
+  color: white;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+}
+.product-container .details button a {
+  padding: 20px 100px;
+  background-color: #5F4BB6;
+  color: white;
+  text-decoration: none;
+}
+
+.product-container .details button:hover a {
+  cursor: pointer;
+  box-shadow: 0px 0px 20px 4px rgba(0, 0, 0, 0.2);
+}
+
+.product-container .details button i {
+  margin-right: 5px;
+}
+
+.product-container .buy {
+  margin-top: auto;
+  justify-self: end;
+  display: flex;
+  justify-content: space-between;
 }
 
 /* keyframes */
@@ -311,69 +406,6 @@ div.product-grid {
      object-fit: cover;
   height: 100%;
   width: 100%;
-}
-
-/* product details */
-.product-container {
-  display: flex;
-  gap: 60px;
-  padding: 0 100px;
-}
-
-.product-container .image {
-  width: 40%;
-  height: 500px;
-  border: 1px solid #ddd;
-}
-
-.product-container .image img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
-.product-container .details {
-  margin-top: 80px;
-  margin-bottom: 80px;
-  color: #202A25;
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.product-container .details .title {
-  font-size: 32px;
-}
-
-.product-container .details button {
-  width: 200px;
-  align-self: flex-end;
-  margin-top: auto;
-  justify-self: end;
-  background-color: #5F4BB6;
-  color: white;
-  border: none;
-  height: 50px;
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.product-container .details button:hover {
-  cursor: pointer;
-  box-shadow: 0px 0px 20px 4px rgba(0, 0, 0, 0.2);
-}
-
-.product-container .details button i {
-  margin-right: 5px;
-}
-
-.product-container .buy {
-  margin-top: auto;
-  justify-self: end;
-  display: flex;
-  justify-content: space-between;
 }
 
 /* cart */
