@@ -13,7 +13,32 @@
         <h2 class="py-10 text-xl font-bold">Congratulations!  :-)</h2>
         <div class="flex justify-between w-full">
             <p>Your order has been received.</p>
-            <p class="font-bold">Order: </p>
+            <p class="font-bold">Order: #{{ order.orderNumber|slice:":5" }}</p>
+        </div>
+        <div class="flex flex-col gap-5 mt-10">
+            {% for product in products %}
+            <div class="flex h-[200px] border border-[#ddd]">
+                <div class="w-[250px] h-full">
+                    <img class="w-full h-full bg-white object-contain" src={{product.image_url}} />
+                </div>
+                <div class="flex flex-col w-full p-6">
+                    <div class="flex w-full">
+                        <p>{{product.name}}</p>
+                        <button class="ml-auto removeProductButton"><a href='/remove_product?id={{product.id}}'>
+                            <i class="fas fa-trash"></i></a></button>
+                    </div>
+                    <div class="mt-auto">
+                        <p class="font-bold">${{product.price}}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <div class="flex border border-[#ddd]">
+                <div class="flex w-full justify-between p-5">
+                    <p>Total:</p>
+                    <p class="font-bold text-sm">${{order.totalPrice}}</p>
+                </div>
+            </div>
         </div>
     </div>
 </body>

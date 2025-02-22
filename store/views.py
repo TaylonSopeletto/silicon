@@ -50,7 +50,14 @@ def cancel_payment(request):
 
 def success_payment(request):
 
-    context = {}
+    orderNumberParam = request.GET.get('orderNumber', None)
+    order = Order.objects.get(orderNumber=orderNumberParam)
+    products = order.products.all()
+
+    context = {
+        'order': order,
+        'products': products
+    }
 
     template = loader.get_template('store/success.html')
     return HttpResponse(template.render(context, request))
@@ -166,7 +173,7 @@ def create(request):
 
     try:
         user = User.objects.get(pk=request.user.id)
-        order = Order(owner=user, totalPrice=int(cart.total_price() * 100), orderNumber=uuid.uuid4(), paymentStatus="APPROVED")
+        order = Order(owner=user, totalPrice=cart.total_price(), orderNumber=uuid.uuid4())
         order.save()
         order.products.set(cart.products.all())
         order.save()
@@ -195,6 +202,9 @@ def create(request):
             success_url = YOUR_DOMAIN + '/success?orderNumber=' + str(order.orderNumber),
             cancel_url=YOUR_DOMAIN + '/cancel',
         )
+
+        cart = Cart.objects.get(owner=request.user.id)
+        cart.products.clear()
     except Exception as e:
         print(e)
     

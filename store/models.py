@@ -23,7 +23,7 @@ class Product(models.Model):
 class Cart(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     products = models.ManyToManyField(Product)
-    totalPrice = models.FloatField()
+    totalPrice = models.FloatField() #todo: remove as is not being used
 
     def total_price(self):
         queryset = self.products.all().aggregate(

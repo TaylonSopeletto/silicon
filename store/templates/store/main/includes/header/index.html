@@ -26,15 +26,14 @@
                 <p>store</p>
             </div>
         </a>
-        <div>
-            <div id="search" class="relative pl-4 flex items-center gap-2 bg-gray-200">
-                <i class="fas fa-search text-gray-500"></i>
-                <input class="outline-none text-black placeholder-gray-500" onblur="onInputBlur()" onfocus="onInputFocused()" placeholder="tell us what u need :)" />
-                <button class="border-0 h-full p-4 bg-[#a298cf] font-bold hover:cursor-pointer hover:bg-[#241a53] hover:text-white">Search</button>
-            </div>
+        
+        <div id="search" class="md:min-w-[40%] min-w-full relative pl-4 flex items-center gap-2 bg-gray-200">
+            <i class="fas fa-search text-gray-500"></i>
+            <input class="w-full p-3 outline-none text-black placeholder-gray-500" onblur="onInputBlur()" onfocus="onInputFocused()" placeholder="tell us what u need :)" />
         </div>
-        <div class="flex gap-5 justify-between w-full sm:w-auto border-solid border-t-1 pt-4 sm:border-0 border-gray-400">
-            <div class="cart">
+        
+        <div class="mb-auto flex gap-5 justify-between w-full md:w-auto border-solid border-t-1 pt-4 md:border-0 border-gray-400">
+            <div class="hover:text-gray-300 cart">
                 <button><a href="/cart"><i class="mr-2 fas fa-shopping-cart"></i>Cart</a></button>
             </div>
             <button><i class="fas fa-user mr-2"></i>{{user.username}}</button>

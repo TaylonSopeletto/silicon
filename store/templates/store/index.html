@@ -17,7 +17,7 @@
             {% for product in products %}
             <a href="product/{{product.publicId}}"" class="border border-gray-200 hover:cursor-pointer hover:shadow-[0px_0px_4px_2px_rgba(0,_0,_0,_0.1)]">
                 <div class="h-[250px] w-full">
-                    <img class="object-cover h-full w-full" src={{product.image_url}} />
+                    <img class="object-contain h-full w-full" src={{product.image_url}} />
                 </div>
                 <div class="h-[100px] flex flex-col justify-items-start p-[10px] text-[#202A25]">
                     <p class="font-bold text-[#202A25]">{{product.name}}</p>
