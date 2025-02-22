@@ -13,7 +13,6 @@ import environ
 env = environ.Env()
 environ.Env.read_env()
 
-
 stripe.api_key = env('STRIPE_API_KEY')
 
 YOUR_DOMAIN = 'http://127.0.0.1:8000'
@@ -46,6 +45,13 @@ def cancel_payment(request):
     context = {}
 
     template = loader.get_template('store/cancel.html')
+    return HttpResponse(template.render(context, request))
+
+def success_payment(request):
+
+    context = {}
+
+    template = loader.get_template('store/success.html')
     return HttpResponse(template.render(context, request))
 
 def create_user(request):
@@ -168,7 +174,6 @@ def create(request):
         checkout_session = stripe.checkout.Session.create(
             line_items=[
                 {
-                    # TODO: replace this with the `price` of the product you want to sell
                     'price': price.id,
                     'quantity': 1,
                 },
@@ -177,15 +182,13 @@ def create(request):
               'card'
             ],
             mode='payment',
-            success_url=YOUR_DOMAIN + '/success',
+            success_url=YOUR_DOMAIN + '/success?session_id={CHECKOUT_SESSION_ID}',
             cancel_url=YOUR_DOMAIN + '/cancel',
         )
     except Exception as e:
         print(e)
     
     return redirect(checkout_session.url, code=303)
-
-
 
 def index(request):
     o = 'name'

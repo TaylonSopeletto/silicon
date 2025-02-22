@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    {% include "store/main/includes/default-html-headers/index.html" %}
+    <title>ES imports - {{product}}</title>
+    <meta name="description" content={{product.name}}>
+</head>
+
+<body>
+    <div>
+        {% include "store/main/includes/header/index.html" %}
+        {% include "store/main/includes/bread-crumb/index.html" %}
+    </div>
+   <h2 class="w-full">Success</h2>
+    
+
+</body>
+
+</html>
