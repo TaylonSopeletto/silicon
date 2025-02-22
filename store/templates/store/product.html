@@ -1,20 +1,8 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="en">
 <head>
     {% load static %}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-        crossorigin="anonymous" />
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static 'public/css/app.css' %}?v={% now 'U' %}">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
-        rel="stylesheet">
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    {% include "store/main/includes/default-html-headers/index.html" %}
     <title>Ambra - {{product}}</title>
     <meta name="description" content={{product.name}}>
 </head>
@@ -24,11 +12,11 @@
         {% include "store/main/includes/header/index.html" %}
         {% include "store/main/includes/bread-crumb/index.html" %}
     </div>
-    <div class="w-[90%] max-w-[1440px] mx-auto flex gap-[60px]">
-        <div class="w-[40%] h-[500px] border border-[#ddd]">
-            <img class="w-full h-full object-cover" alt={{product.name}} src={{product.image_url}} />
+    <div class="flex flex-col sm:flex-row w-[90%] max-w-[1440px] mx-auto flex gap-[60px]">
+        <div class="sm:w-[40%] sm:h-[500px] border border-[#ddd]">
+            <img class="w-full h-full object-contain" alt={{product.name}} src={{product.image_url}} />
         </div>
-        <div class="mt-[80px] mb-[80px] text-[#202A25] w-[60%] flex flex-col gap-[20px]">
+        <div class="sm:mt-[80px] mb-[80px] text-[#202A25] sm:w-[60%] flex flex-col gap-[20px]">
             <h2 class="text-[32px]">{{product.name}}</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, porro. Quisquam iusto voluptas provident
                 quia quibusdam dolore necessitatibus ducimus quo nisi. Explicabo deserunt corrupti veniam quis, iusto
