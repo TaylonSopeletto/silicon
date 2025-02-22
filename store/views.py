@@ -151,9 +151,7 @@ def checkout(request):
 
 
 def create(request):
-
     cart = Cart.objects.get(owner=request.user.id)
-    
 
     try:
 
@@ -184,7 +182,6 @@ def create(request):
         )
     except Exception as e:
         print(e)
-   
     
     return redirect(checkout_session.url, code=303)
 
