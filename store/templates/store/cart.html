@@ -20,12 +20,12 @@
 
 <body>
     {% include "store/main/includes/header/index.html" %}
-    <div class="flex flex-col py-2 px-24">
+    <div class="w-[90%] max-w-[1440px] mx-auto flex flex-col py-2 ">
         <h2 class="py-10">My Cart</h2>
         <div class="flex flex-col gap-5">
             {% for product in products %}
             <div class="flex h-[200px] border border-[#ddd]">
-                <div class="w-[150px] h-full">
+                <div class="w-[250px] h-full">
                     <img class="w-full h-full bg-white object-cover" src={{product.image_url}} />
                 </div>
                 <div class="flex flex-col w-full p-6">

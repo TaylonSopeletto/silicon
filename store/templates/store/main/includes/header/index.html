@@ -17,32 +17,36 @@
         search.style.zIndex = 0
     }
 </script>
-<header class="flex justify-between px-24 items-center bg-[#5F4BB6] min-h-[100px] text-white">
-    <a href="/" class="flex items-center gap-2 no-underline text-white">
-        <i class="text-5xl fas fa-microchip"></i>
+<header class="bg-[#5F4BB6]">
+    <div class="w-[90%] max-w-[1440px] mx-auto max-w-[1440px] mx-auto flex flex-col md:flex-row gap-10 md:gap-0 pt-8 justify-between items-center  min-h-[100px] text-white">
+        <a href="/" class="flex items-center gap-2 no-underline text-white">
+            <i class="text-5xl fas fa-microchip"></i>
+            <div>
+                <h1 class="text-[20px] border-b border-[#aaa]">Ambra</h1>
+                <p>store</p>
+            </div>
+        </a>
         <div>
-            <h1 class="text-[20px] border-b border-[#aaa]">Ambra</h1>
-            <p>store</p>
+            <div id="search" class="relative pl-4 flex items-center gap-2 bg-gray-200">
+                <i class="fas fa-search text-gray-500"></i>
+                <input class="placeholder-gray-500" onblur="onInputBlur()" onfocus="onInputFocused()" placeholder="tell us what u need :)" />
+                <button class="border-0 h-full p-4 bg-[#a298cf] font-bold hover:cursor-pointer hover:bg-[#241a53] hover:text-white">Search</button>
+            </div>
         </div>
-    </a>
-    <div>
-        <div id="search" class="relative pl-4 flex items-center gap-2 bg-gray-200">
-            <i class="fas fa-search text-gray-500"></i>
-            <input class="min-w-[300px] placeholder-gray-500" onblur="onInputBlur()" onfocus="onInputFocused()" placeholder="tell us what u need :)" />
-            <button class="border-0 h-full p-4 bg-[#a298cf] font-bold hover:cursor-pointer hover:bg-[#241a53] hover:text-white">Search</button>
+        <div class="flex gap-5">
+            <div class="cart">
+                <button><a href="/cart"><i class="mr-2 fas fa-shopping-cart"></i>Cart</a></button>
+            </div>
+            <button><i class="fas fa-user mr-2"></i>{{user.username}}</button>
         </div>
-    </div>
-    <div class="flex gap-5">
-        <div class="cart">
-            <button><a href="/cart"><i class="mr-2 fas fa-shopping-cart"></i>Cart</a></button>
-        </div>
-        <button><i class="fas fa-user mr-2"></i>{{user.username}}</button
     </div>
 </header>
-<div class="flex items-center h-[60px] px-[100px] bg-[#5F4BB6] gap-[40px]">
-    <a class="no-underline text-white text-[14px] hover:text-[#a9a1d1]" href="?base_category=shirt">Shirt</a>
-    <a class="no-underline text-white text-[14px] hover:text-[#a9a1d1]" href="?base_category=graphic_card">Graphic Card</a>
-    <a class="no-underline text-white text-[14px] hover:text-[#a9a1d1]" href="?base_category=shirt">Shirt</a>
+<div class="bg-[#5F4BB6]">
+    <div class="w-[90%] max-w-[1440px] mx-auto flex items-center h-[60px]  gap-[40px]">
+        <a class="no-underline text-white text-[14px] hover:text-[#a9a1d1]" href="?base_category=shirt">Shirt</a>
+        <a class="no-underline text-white text-[14px] hover:text-[#a9a1d1]" href="?base_category=graphic_card">Graphic Card</a>
+        <a class="no-underline text-white text-[14px] hover:text-[#a9a1d1]" href="?base_category=shirt">Shirt</a>
+    </div>
 </div>
 
 
