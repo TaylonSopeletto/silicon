@@ -29,7 +29,7 @@
         <div>
             <div id="search" class="relative pl-4 flex items-center gap-2 bg-gray-200">
                 <i class="fas fa-search text-gray-500"></i>
-                <input class="placeholder-gray-500" onblur="onInputBlur()" onfocus="onInputFocused()" placeholder="tell us what u need :)" />
+                <input class="outline-none text-black placeholder-gray-500" onblur="onInputBlur()" onfocus="onInputFocused()" placeholder="tell us what u need :)" />
                 <button class="border-0 h-full p-4 bg-[#a298cf] font-bold hover:cursor-pointer hover:bg-[#241a53] hover:text-white">Search</button>
             </div>
         </div>
@@ -43,9 +43,9 @@
 </header>
 <div class="bg-[#5F4BB6]">
     <div class="w-[90%] max-w-[1440px] mx-auto flex items-center h-[60px]  gap-[40px]">
-        <a class="no-underline text-white text-[14px] hover:text-[#a9a1d1]" href="?base_category=shirt">Shirt</a>
-        <a class="no-underline text-white text-[14px] hover:text-[#a9a1d1]" href="?base_category=graphic_card">Graphic Card</a>
-        <a class="no-underline text-white text-[14px] hover:text-[#a9a1d1]" href="?base_category=shirt">Shirt</a>
+        {% for category in categories %}
+            <a class="no-underline text-white text-[14px] hover:text-[#a9a1d1]" href="/?base_category={{category.name}}">{{category.name}}</a>
+        {% endfor %} 
     </div>
 </div>
 

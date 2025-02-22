@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.core import serializers
 from django.shortcuts import redirect
 from django.contrib.auth import authenticate, login
-from .models import Product, Cart
+from .models import Product, Cart, Category
 from django.contrib. auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -20,7 +20,7 @@ YOUR_DOMAIN = 'http://127.0.0.1:8000'
 
 def product(request, product_id):
     product = Product.objects.get(pk=product_id)
-    categories = Product.objects.get(pk=product_id).categories.all()
+    all_categories = Category.objects.all()
     product_json = serializers.serialize('json', Product.objects.filter(pk=product_id))
 
     template = loader.get_template('store/product.html')
@@ -29,7 +29,7 @@ def product(request, product_id):
        'product_id': product_id,
        'product': product,
        'product_json': product_json,
-       'categories': categories
+       'categories': all_categories
        
     }
     return HttpResponse(template.render(context, request))
@@ -206,11 +206,13 @@ def index(request):
     
         
     index_products = Product.objects.filter(**f).order_by(o)
+    all_categories = Category.objects.all()
 
     template = loader.get_template('store/index.html')
     context = {
         'title': '50% OFF prices so cheap',
         'products': index_products,
-        'category1': base_category
+        'category1': base_category,
+        'categories': all_categories
     }
     return HttpResponse(template.render(context, request))
