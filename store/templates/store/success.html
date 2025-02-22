@@ -4,18 +4,18 @@
 <head>
     {% load static %}
     {% include "store/main/includes/default-html-headers/index.html" %}
-    <title>ES imports - {{product}}</title>
-    <meta name="description" content={{product.name}}>
+    <title>ES - Success</title>
 </head>
 
 <body>
-    <div>
-        {% include "store/main/includes/header/index.html" %}
-        {% include "store/main/includes/bread-crumb/index.html" %}
+    {% include "store/main/includes/header/index.html" %}
+    <div class="w-[90%] max-w-[1440px] mx-auto flex flex-col py-2 ">
+        <h2 class="py-10 text-xl font-bold">Congratulations!  :-)</h2>
+        <div class="flex justify-between w-full">
+            <p>Your order has been received.</p>
+            <p class="font-bold">Order: #324234</p>
+        </div>
     </div>
-   <h2 class="w-full">Success</h2>
-    
-
 </body>
 
 </html>

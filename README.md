@@ -28,4 +28,12 @@ javascript and css must be edited here `/store/static/resources`
 
 the files in `/store/static/public` are the compiled version
 
+## credit card example ##
+
+here a fake credit card example that will work on the test mode
+
+number `4242 4242 4242 4242` 
+expiration date `01/30` 
+security code `123`
+
 

@@ -4,18 +4,18 @@
 <head>
     {% load static %}
     {% include "store/main/includes/default-html-headers/index.html" %}
-    <title>ES imports - {{product}}</title>
-    <meta name="description" content={{product.name}}>
+    <title>ES - Failed</title>
 </head>
 
 <body>
-    <div>
-        {% include "store/main/includes/header/index.html" %}
-        {% include "store/main/includes/bread-crumb/index.html" %}
+    {% include "store/main/includes/header/index.html" %}
+    <div class="w-[90%] max-w-[1440px] mx-auto flex flex-col py-2 ">
+        <h2 class="py-10 text-xl font-bold">Oops!  :-(</h2>
+        <div class="flex justify-between w-full">
+            <p>I'm sorry. Something went wrong with your order.</p>
+        </div>
+        <p class="mt-10">You can <a class="hover:underline text-gray-500" href="/">click here</a> and try again!</p>
     </div>
-   <h2 class="w-full">Order canceled :c</h2>
-    
-
 </body>
 
 </html>
