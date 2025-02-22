@@ -124,20 +124,24 @@ def removeProduct(request):
     return redirect('/cart')
 
 def cart(request):
-    cart = Cart.objects.get(owner=request.user.id)
-    products = cart.products.all()
-    
-    context = {
-        'cart': cart,
-        'products': products
-    }
-    template = loader.get_template('store/cart.html')
-    empty_template = loader.get_template('store/empty_cart.html')
 
-    if products:
-        return HttpResponse(template.render(context, request))
-    else:
-        return HttpResponse(empty_template.render(context, request))
+    try:
+        cart = Cart.objects.get(owner=request.user.id)
+        products = cart.products.all()
+        
+        context = {
+            'cart': cart,
+            'products': products
+        }
+        template = loader.get_template('store/cart.html')
+        empty_template = loader.get_template('store/empty_cart.html')
+
+        if products:
+            return HttpResponse(template.render(context, request))
+        else:
+            return HttpResponse(empty_template.render(context, request))
+    except ObjectDoesNotExist:
+        return redirect('login_page')
 
 def checkout(request):
     cart = Cart.objects.get(owner=request.user.id)

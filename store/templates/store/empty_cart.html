@@ -9,9 +9,11 @@
 
 <body>
     {% include "store/main/includes/header/index.html" %}
-    <div class="cart-container">
-        <h2>My Cart</h2>
-        <p>Your cart is empty</p>
+    <div class="w-[90%] max-w-[1440px] mx-auto flex flex-col py-2 ">
+        <h2 class="py-10 text-xl font-bold">Your cart is empty!  :-(</h2>
+        <div class="flex justify-between w-full">
+            <p class="mt-10">You can <a class="hover:underline text-gray-500" href="/">click here</a> to navigate and buy products!</p>
+        </div>
     </div>
 
     <script src="{% static 'dist/cart.bundle.js' %}"></script>
