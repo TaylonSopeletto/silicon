@@ -2,7 +2,7 @@
 
 git clone clone https://github.com/TaylonSopeletto/ambra
 
-### setting up django for the first time ###
+### set up django for the first time ###
 
 `virtualenv venv`
 
