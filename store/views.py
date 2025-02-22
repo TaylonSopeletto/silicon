@@ -3,9 +3,10 @@ from django.http import HttpResponse
 from django.core import serializers
 from django.shortcuts import redirect
 from django.contrib.auth import authenticate, login
-from .models import Product, Cart, Category
+from .models import Product, Cart, Category, Order
 from django.contrib. auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
+import uuid
 
 import stripe
 import environ
@@ -18,9 +19,9 @@ stripe.api_key = env('STRIPE_API_KEY')
 YOUR_DOMAIN = 'http://127.0.0.1:8000'
 
 def product(request, product_id):
-    product = Product.objects.get(pk=product_id)
+    product = Product.objects.get(publicId=product_id)
     all_categories = Category.objects.all()
-    product_json = serializers.serialize('json', Product.objects.filter(pk=product_id))
+    product_json = serializers.serialize('json', Product.objects.filter(publicId=product_id))
 
     template = loader.get_template('store/product.html')
 
@@ -164,6 +165,11 @@ def create(request):
     cart = Cart.objects.get(owner=request.user.id)
 
     try:
+        user = User.objects.get(pk=request.user.id)
+        order = Order(owner=user, totalPrice=int(cart.total_price() * 100), orderNumber=uuid.uuid4(), paymentStatus="APPROVED")
+        order.save()
+        order.products.set(cart.products.all())
+        order.save()
 
         product = stripe.Product.create(
         name='order',
@@ -186,7 +192,7 @@ def create(request):
               'card'
             ],
             mode='payment',
-            success_url=YOUR_DOMAIN + '/success?session_id={CHECKOUT_SESSION_ID}',
+            success_url = YOUR_DOMAIN + '/success?orderNumber=' + str(order.orderNumber),
             cancel_url=YOUR_DOMAIN + '/cancel',
         )
     except Exception as e:
