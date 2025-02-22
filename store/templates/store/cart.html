@@ -20,8 +20,8 @@
                 <div class="flex flex-col w-full p-6">
                     <div class="flex w-full">
                         <p>{{product.name}}</p>
-                        <button class="ml-auto removeProductButton"><a href='/remove_product?id={{product.id}}'><i
-                                    class="fas fa-trash"></i></a></button>
+                        <button class="ml-auto removeProductButton"><a href='/remove_product?id={{product.id}}'>
+                            <i class="fas fa-trash"></i></a></button>
                     </div>
                     <div class="mt-auto">
                         <p class="font-bold">${{product.price}}</p>
@@ -36,14 +36,10 @@
                 </div>
             </div>
         </div>
-
         <form class="ml-auto" action="/create-checkout-session" method="POST">{% csrf_token %}
-            <button class="mt-10 w-[200px] p-5 bg-[#5F4BB6] text-white font-bold border-2 border-transparent" type="submit">Checkout</button>
+            <button class="mt-10 w-[200px] p-5 bg-[#5F4BB6] text-white font-bold border-2 border-transparent hover:bg-white hover:text-[#5F4BB6] hover:border-2 hover:border-solid hover:border-[#5F4BB6] hover:cursor-pointer" type="submit">Checkout</button>
         </form>
-
-
     </div>
-
     <script src="{% static 'dist/cart.bundle.js' %}"></script>
 </body>
 
