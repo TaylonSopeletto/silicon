@@ -41,6 +41,13 @@ def login_page(request):
     template = loader.get_template('store/login.html')
     return HttpResponse(template.render(context, request))
 
+def cancel_payment(request):
+
+    context = {}
+
+    template = loader.get_template('store/cancel.html')
+    return HttpResponse(template.render(context, request))
+
 def create_user(request):
     username = request.POST['username']
     email = request.POST['email']
@@ -157,7 +164,7 @@ def create(request):
         price = stripe.Price.create(
         product=product.id,
         unit_amount=(int(cart.total_price() * 100)),
-        currency='brl',
+        currency='usd',
         )
 
         checkout_session = stripe.checkout.Session.create(
@@ -172,8 +179,8 @@ def create(request):
               'card'
             ],
             mode='payment',
-            success_url=YOUR_DOMAIN + '/success.html',
-            cancel_url=YOUR_DOMAIN + '/cancel.html',
+            success_url=YOUR_DOMAIN + '/success',
+            cancel_url=YOUR_DOMAIN + '/cancel',
         )
     except Exception as e:
         print(e)

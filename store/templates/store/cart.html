@@ -9,49 +9,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static 'public/css/app.css' now 'U' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'public/css/app.css' %}?v={% now 'U' %}">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
         rel="stylesheet">
-
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <title>Ambra - Cart</title>
 </head>
 
 <body>
     {% include "store/main/includes/header/index.html" %}
-    <div class="cart-container">
-        <h2>My Cart</h2>
-
-        <div class="cart-products">
+    <div class="flex flex-col py-2 px-24">
+        <h2 class="py-10">My Cart</h2>
+        <div class="flex flex-col gap-5">
             {% for product in products %}
-            <div class="cart-product">
-                <div class="image">
-                    <img src={{product.image_url}} />
+            <div class="flex h-[200px] border border-[#ddd]">
+                <div class="w-[150px] h-full">
+                    <img class="w-full h-full bg-white object-cover" src={{product.image_url}} />
                 </div>
-                <div class="description">
-                    <div class="row-1">
+                <div class="flex flex-col w-full p-6">
+                    <div class="flex w-full">
                         <p>{{product.name}}</p>
-                        <button class="removeProductButton"><a href='/remove_product?id={{product.id}}'><i
+                        <button class="ml-auto removeProductButton"><a href='/remove_product?id={{product.id}}'><i
                                     class="fas fa-trash"></i></a></button>
                     </div>
-                    <div class="row-2">
-                        <p>${{product.price}}</p>
+                    <div class="mt-auto">
+                        <p class="font-bold">${{product.price}}</p>
                     </div>
                 </div>
             </div>
             {% endfor %}
-            <div class="cart-product-total">
-
-                <div class="total">
+            <div class="flex border border-[#ddd]">
+                <div class="flex w-full justify-between p-5">
                     <p>Total:</p>
-                    <p class="total-label">${{cart.total_price}}</p>
+                    <p class="font-bold text-sm">${{cart.total_price}}</p>
                 </div>
             </div>
         </div>
 
-        <form class="left-submit" action="/create-checkout-session" method="POST">{% csrf_token %}
-            <button class="submit" type="submit">Checkout</button>
+        <form class="ml-auto" action="/create-checkout-session" method="POST">{% csrf_token %}
+            <button class="mt-10 w-[200px] p-5 bg-[#5F4BB6] text-white font-bold border-2 border-transparent" type="submit">Checkout</button>
         </form>
 
 

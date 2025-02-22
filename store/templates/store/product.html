@@ -9,35 +9,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static 'public/css/app.css' now 'U' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'public/css/app.css' %}?v={% now 'U' %}">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
         rel="stylesheet">
-
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <title>Ambra - {{product}}</title>
     <meta name="description" content={{product.name}}>
 </head>
 
 <body>
-
-    <div class="container">
+    <div>
         {% include "store/main/includes/header/index.html" %}
         {% include "store/main/includes/bread-crumb/index.html" %}
     </div>
-    <div class="product-container">
-        <div class="image">
-            <img alt={{product.name}} src={{product.image_url}} />
+    <div class="flex gap-[60px] px-[100px]">
+        <div class="w-[40%] h-[500px] border border-[#ddd]">
+            <img class="w-full h-full object-cover" alt={{product.name}} src={{product.image_url}} />
         </div>
-        <div class="details">
-            <h2 class="title">{{product.name}}</h2>
+        <div class="mt-[80px] mb-[80px] text-[#202A25] w-[60%] flex flex-col gap-[20px]">
+            <h2 class="text-[32px]">{{product.name}}</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, porro. Quisquam iusto voluptas provident
                 quia quibusdam dolore necessitatibus ducimus quo nisi. Explicabo deserunt corrupti veniam quis, iusto
                 molestias quia inventore!</p>
-            <div class="buy">
-                <h2 class="price">${{product.price}}</h2>
-                <button id="addProductButton"><a href='/add_product?id={{product.id}}'><i
-                            class="fas fa-shopping-cart"></i>Buy</a></button>
+            <div class="mt-auto">
+                <h2 class="font-bold">${{product.price}}</h2>
+                <button class="mt-10 w-[200px] p-5 bg-[#5F4BB6] text-white font-bold border-2 border-transparent" id="addProductButton">
+                    <a class="w-full h-full" href='/add_product?id={{product.id}}'>
+                        <i class="fas fa-shopping-cart"></i>
+                        Buy
+                    </a>
+                </button>
             </div>
         </div>
     </div>
