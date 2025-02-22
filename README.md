@@ -24,7 +24,7 @@ git clone clone https://github.com/TaylonSopeletto/ambra
 
 ## FYI ##
 
-javascript and css in dev mode should be edited here `/store/static/resources`
+javascript and css must be edited here `/store/static/resources`
 
 the files in `/store/static/public` are the compiled version
 
