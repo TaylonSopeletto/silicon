@@ -4,7 +4,8 @@ git clone clone https://github.com/TaylonSopeletto/ambra
 
 ### set up django for the first time ###
 
-`venv\Scripts\activate`
+windows `venv\Scripts\activate`
+mac / linux`source venv/bin/activate`
 
 `pip install -r requirements.txt`
 
