@@ -13,20 +13,6 @@ mac / linux`source venv/bin/activate`
 
 `python3 manage.py runserver`
 
-## set up webpack ##
-
-`cd store/static`
-
-`npm i`
-
-`npm run watch`
-
-## FYI ##
-
-javascript and css must be edited here `/store/static/resources`
-
-the files in `/store/static/public` are the compiled version
-
 ## credit card example ##
 
 credit card to use on test mode
