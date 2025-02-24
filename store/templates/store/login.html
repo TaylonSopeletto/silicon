@@ -9,6 +9,76 @@
 </head>
 
 <body>
+    <style>
+        /* login */
+
+        form.login {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 400px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        }
+
+        .group label {
+        color: #202A25;
+        }
+
+        .group input {
+        outline: none;
+        padding: 15px;
+        background-color: #f5f5f5;
+        border: none;
+        border: 1px solid #f5f5f5;
+
+        }
+
+        .group input:focus {
+        background-color: white;
+        border: 1px solid #ffff;
+        box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.4);
+        }
+
+        .group button {
+        padding: 15px;
+        background-color: #5F4BB6;
+        color: white;
+        border: none;
+        border: 1px solid #5F4BB6;
+        }
+
+        .group button:hover {
+        background-color: white;
+        color: #5F4BB6;
+        border: 1px solid #5F4BB6;
+        cursor: pointer;
+        }
+
+        .group {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        }
+
+        .logo {
+        display: flex;
+        text-decoration: none;
+        color: #5F4BB6;
+        gap: 10px;
+
+        i {
+            font-size: 42px;
+        }
+
+        }
+
+        .no-account {
+        text-align: center;
+        }
+    </style>
     <form class="login" action="/authentication" method="post">{% csrf_token %}
         <a href="/" class="logo">
             <i class="fas fa-microchip"></i>
@@ -31,7 +101,6 @@
         </div>
 
         <p class="no-account">Do not have an account? <a href="/register_page">click here</a> to create one</p>
-
     </form>
 
 </body>

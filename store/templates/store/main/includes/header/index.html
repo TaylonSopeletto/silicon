@@ -17,6 +17,37 @@
         search.style.zIndex = 0
     }
 </script>
+<style>
+    @keyframes arrow_animation {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(5px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+    }
+
+
+    /* all fonts the same and some basic config*/
+    body{
+    font-family: 'Open Sans', sans-serif;
+    }
+
+    .overlay {
+    visibility: hidden;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    }
+</style>
 <header class="bg-[#5F4BB6]">
     <div class="w-[90%] max-w-[1440px] mx-auto max-w-[1440px] mx-auto flex flex-col md:flex-row gap-10 md:gap-0 pt-8 justify-between items-center  min-h-[100px] text-white">
         <a href="/" class="flex items-center gap-2 no-underline text-white">

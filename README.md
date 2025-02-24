@@ -1,6 +1,6 @@
 ## get started ##
 
-git clone clone https://github.com/TaylonSopeletto/ambra
+`git clone https://github.com/TaylonSopeletto/ambra`
 
 ### set up django for the first time ###
 
