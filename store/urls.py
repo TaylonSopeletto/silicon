@@ -11,11 +11,9 @@ urlpatterns = [
     path('authentication', views.authentication, name='authentication'),
     path('create_user', views.create_user, name='create_user'),
     path('product/<str:product_id>/', views.product, name='product'),
-
     path('cart', views.cart, name='cart'),
     path('add_product', views.addProduct, name='add_product'),
     path('remove_product', views.removeProduct, name='remove_product'),
-
     path('checkout', views.checkout, name='checkout'),
     path('create-checkout-session', views.create, name='create')
 ]

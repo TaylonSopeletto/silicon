@@ -15,6 +15,7 @@
             <p>Your order has been received.</p>
             <p class="font-bold">Order: #{{ order.orderNumber|slice:":5" }}</p>
         </div>
+        <p class="mt-4">Payment Status: {{ order.paymentStatus }}</p>
         <div class="flex flex-col gap-5 mt-10">
             {% for product in products %}
             <div class="flex h-[200px] border border-[#ddd]">
