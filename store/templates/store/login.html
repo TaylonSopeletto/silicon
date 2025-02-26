@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-100 flex flex-col gap-5" action="/authentication" method="post">{% csrf_token %}
+    <form class="w-[90%] max-w-[500px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-100 flex flex-col gap-5" action="/authentication" method="post">{% csrf_token %}
         <a href="/" class="flex decoration-none text-[#5F4BB6] gap-2">
             <i class="fas fa-microchip text-5xl"></i>
             <div>
@@ -30,7 +30,7 @@
             <button class="p-[15px] bg-[#5F4BB6] text-white border border-[#5F4BB6]" type="submit">Login</button>
         </div>
 
-        <p class="text-center">Do not have an account? <a href="/register_page">click here</a> to create one</p>
+        <p class="text-center">Do not have an account? <a class="text-gray-400 hover:underline" href="/register_page">click here</a> to create one</p>
     </form>
 
 </body>
