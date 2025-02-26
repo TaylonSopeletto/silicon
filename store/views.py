@@ -16,7 +16,7 @@ environ.Env.read_env()
 
 stripe.api_key = env('STRIPE_API_KEY')
 
-YOUR_DOMAIN = 'http://127.0.0.1:8000'
+YOUR_DOMAIN = env('STRIPE_REDIRECT_DOMAIN')
 
 def product(request, product_id):
     product = Product.objects.get(publicId=product_id)
@@ -30,7 +30,6 @@ def product(request, product_id):
        'product': product,
        'product_json': product_json,
        'categories': all_categories
-       
     }
     return HttpResponse(template.render(context, request))
 
