@@ -61,6 +61,17 @@ def success_payment(request):
     template = loader.get_template('store/success.html')
     return HttpResponse(template.render(context, request))
 
+def user(request):
+
+    orders = Order.objects.all().filter(owner=request.user.id)
+
+    context = {
+        'orders': orders
+    }
+
+    template = loader.get_template('store/user.html')
+    return HttpResponse(template.render(context, request))
+
 def create_user(request):
     username = request.POST['username']
     email = request.POST['email']
@@ -131,7 +142,6 @@ def removeProduct(request):
     return redirect('/cart')
 
 def cart(request):
-
     try:
         cart = Cart.objects.get(owner=request.user.id)
         products = cart.products.all()
@@ -164,8 +174,6 @@ def checkout(request):
         return HttpResponse(template.render(context, request))
     else:
         return redirect('/')
-
-
 
 def create(request):
     cart = Cart.objects.get(owner=request.user.id)

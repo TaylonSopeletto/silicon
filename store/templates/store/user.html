@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    {% include "store/main/includes/default-html-headers/index.html" %}
+    <title>ES - Order</title>
+</head>
+
+<body>
+    {% include "store/main/includes/header/index.html" %}
+    <div class="flex w-[90%] max-w-[1440px] mx-auto">
+        <div class="w-[30%] flex flex-col bg-gray-200 p-10 gap-10 text-center">
+            <a class="hover:underline" href="/profile">My Profile</a>
+            <a class="hover:underline" href="/orders">Orders</a>
+        </div>
+        <div class="w-[70%] flex flex-col py-2 m-10">
+            <h2 class="pb-10 font-bold text-xl">My Orders</h2>
+            <div class="flex flex-col gap-5">
+                {% for order in orders %}
+                <div class="flex flex-col gap-5 border border-[#ddd] p-8">
+                    <div class="flex justify-between">
+                        <p>Order:</p>
+                        <p class="font-bold">#{{ order.orderNumber|slice:":5" }}</p>
+                    </div>
+                    <div class="flex justify-between">
+                        <p>Payment Status:</p>
+                        <p class="font-bold">{{order.paymentStatus}}</p>
+                    </div>
+                    <div class="flex justify-between">
+                        <p>Products:</p>
+                        <ul>
+                            {% for product in order.products.all %}
+                                <li>{{ product.name }}</li> 
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="flex justify-between">
+                        <p>Total price:</p>
+                        <p class="font-bold">{{order.totalPrice}}$</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'dist/cart.bundle.js' %}"></script>
+</body>
+
+</html>

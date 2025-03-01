@@ -3,17 +3,21 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    #public
     path('', views.index, name='index'),
-    path('cancel', views.cancel_payment, name='cancel'),
-    path('success', views.success_payment, name='success'),
-    path('login_page', views.login_page, name='login_page'),
+    path('product/<str:product_id>/', views.product, name='product'),
     path('register_page', views.register_page, name='register_page'),
+    path('login_page', views.login_page, name='login_page'),
     path('authentication', views.authentication, name='authentication'),
     path('create_user', views.create_user, name='create_user'),
-    path('product/<str:product_id>/', views.product, name='product'),
+    #user
+    path('user', views.user, name='user'),
+    #cart
     path('cart', views.cart, name='cart'),
     path('add_product', views.addProduct, name='add_product'),
     path('remove_product', views.removeProduct, name='remove_product'),
-    path('checkout', views.checkout, name='checkout'),
+    #order
+    path('cancel', views.cancel_payment, name='cancel'),
+    path('success', views.success_payment, name='success'),
     path('create-checkout-session', views.create, name='create')
 ]
