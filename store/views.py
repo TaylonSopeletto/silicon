@@ -39,14 +39,12 @@ def login_page(request):
     return HttpResponse(template.render(context, request))
 
 def cancel_payment(request):
-
     context = {}
 
     template = loader.get_template('store/cancel.html')
     return HttpResponse(template.render(context, request))
 
 def success_payment(request):
-
     session_id = request.GET.get('session_id')
     if session_id:
         try:
@@ -110,11 +108,8 @@ def create_user(request):
     
 
 def register_page(request):
-   
-    context = {}
-
     template = loader.get_template('store/register.html')
-    return HttpResponse(template.render(context, request))
+    return HttpResponse(template.render(request))
 
 def authentication(request):
     username = request.POST['username']
@@ -128,9 +123,7 @@ def authentication(request):
     else:
         return redirect('/login_page')
 
-
 def addProduct(request):
-
     productId = request.GET['id']
     product = Product.objects.get(pk=productId)
     user = None
@@ -150,10 +143,8 @@ def addProduct(request):
             return redirect('/cart')
     except ObjectDoesNotExist:
         return redirect('login_page')
-        
    
 def removeProduct(request):
-
     productId = request.GET['id']
     product = Product.objects.get(pk=productId)
 

@@ -10,7 +10,7 @@
 <body>
     {% include "store/main/includes/header/index.html" %}
     <div class="flex w-[90%] max-w-[1440px] mx-auto">
-        <div class="w-[30%]">
+        <div class="hidden sm:block w-[30%]">
             <p class="text-xl py-10">Menu</p>
             <ul class="flex flex-col gap-5">
                 <a class="hover:underline {% if menu == 'profile' %}font-bold{% endif %}" href="/user?menu=profile">Profile</a>
@@ -18,10 +18,10 @@
                 <a class="hover:underline" href="/logout">Log out</a>
             </ul>
         </div>
-        <div class="w-[70%] flex flex-col">
+        <div class="w-full sm:w-[70%] flex flex-col">
             {% if menu == 'profile' %}
                 <h2 class="py-10 font-bold text-xl">My Profile</h2>
-                <div class="grid grid-cols-2 gap-5">
+                <div class="grid sm:grid-cols-2 gap-5">
                     <div class="flex flex-col gap-2">
                         <label>First Name:</label>
                         <input readonly value="{{user.first_name}}" class="cursor-not-allowed outline-none p-4 bg-[#f5f5f5] border border-[#f5f5f5]" name="username" placeholder="John">
@@ -54,7 +54,7 @@
                             </div>
                             <div class="flex justify-between">
                                 <p>Order Date:</p>
-                                <p>{{ order.orderDate }}</p>
+                                <p>{{ order.orderDate|date:"D d M Y" }}</p>
                             </div>
                             <div class="flex justify-between">
                                 <p>Payment Status:</p>

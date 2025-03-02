@@ -37,6 +37,3 @@ class Order(models.Model):
     orderNumber = models.CharField(max_length=30)
     paymentStatus = models.CharField(max_length=30, default="NOT_APPROVED")
     orderDate = models.DateTimeField(auto_now_add=True, blank=True)
-    
-    
-
