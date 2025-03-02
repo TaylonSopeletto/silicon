@@ -18,34 +18,18 @@
     }
 </script>
 <style>
-    @keyframes arrow_animation {
-    0% {
-        transform: translateY(0px);
-    }
-
-    50% {
-        transform: translateY(5px);
-    }
-
-    100% {
-        transform: translateY(0px);
-    }
-    }
-
-
-    /* all fonts the same and some basic config*/
     body{
     font-family: 'Open Sans', sans-serif;
     }
 
     .overlay {
-    visibility: hidden;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+        visibility: hidden;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.5);
     }
 </style>
 <header class="bg-[#5F4BB6]">
@@ -64,10 +48,8 @@
         </div>
         
         <div class="mb-auto flex gap-5 justify-between w-full md:w-auto border-solid border-t-1 pt-4 md:border-0 border-gray-400">
-            <div class="hover:text-gray-300 cart">
-                <button><a href="/cart"><i class="mr-2 fas fa-shopping-cart"></i>Cart</a></button>
-            </div>
-            <button><i class="fas fa-user mr-2"></i>{{user.username}}</button>
+            <button class="hover:text-gray-300"><a href="/cart"><i class="mr-2 fas fa-shopping-cart"></i>Cart</a></button>
+            <button class="hover:text-gray-300"><a href="/user?menu=profile"><i class="fas fa-user mr-2"></i>{{user.username}}</a></button>
         </div>
     </div>
 </header>

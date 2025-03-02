@@ -6,12 +6,13 @@ urlpatterns = [
     #public
     path('', views.index, name='index'),
     path('product/<str:product_id>/', views.product, name='product'),
-    path('register_page', views.register_page, name='register_page'),
-    path('login_page', views.login_page, name='login_page'),
-    path('authentication', views.authentication, name='authentication'),
-    path('create_user', views.create_user, name='create_user'),
+    
     #user
     path('user', views.user, name='user'),
+    path('login_page', views.login_page, name='login_page'),
+    path('authentication', views.authentication, name='authentication'),
+    path('register_page', views.register_page, name='register_page'),
+    path('logout', views.logout_view, name='logout'),
     #cart
     path('cart', views.cart, name='cart'),
     path('add_product', views.addProduct, name='add_product'),

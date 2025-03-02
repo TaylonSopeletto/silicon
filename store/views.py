@@ -2,7 +2,7 @@ from django.template import loader
 from django.http import HttpResponse
 from django.core import serializers
 from django.shortcuts import redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from .models import Product, Cart, Category, Order
 from django.contrib. auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
@@ -21,14 +21,12 @@ YOUR_DOMAIN = env('STRIPE_REDIRECT_DOMAIN')
 def product(request, product_id):
     product = Product.objects.get(publicId=product_id)
     all_categories = Category.objects.all()
-    product_json = serializers.serialize('json', Product.objects.filter(publicId=product_id))
 
     template = loader.get_template('store/product.html')
 
     context = {
        'product_id': product_id,
        'product': product,
-       'product_json': product_json,
        'categories': all_categories
     }
     return HttpResponse(template.render(context, request))
@@ -49,24 +47,48 @@ def cancel_payment(request):
 
 def success_payment(request):
 
-    orderNumberParam = request.GET.get('orderNumber', None)
-    order = Order.objects.get(orderNumber=orderNumberParam)
-    products = order.products.all()
+    session_id = request.GET.get('session_id')
+    if session_id:
+        try:
+            session = stripe.checkout.Session.retrieve(session_id)
+            if session.payment_status == 'paid':
+                orderNumberParam = request.GET.get('orderNumber', None)
+                order = Order.objects.get(orderNumber=orderNumberParam)
+                products = order.products.all()
+               
+                if order:
+                    order.paymentStatus = "APPROVED"
+                    order.save()
 
-    context = {
-        'order': order,
-        'products': products
-    }
+                    context = {
+                        'order': order,
+                        'products': products
+                    }
 
-    template = loader.get_template('store/success.html')
-    return HttpResponse(template.render(context, request))
+                    template = loader.get_template('store/success.html')
+                    return HttpResponse(template.render(context, request))
+                else: return redirect('/not-found') 
+            else:
+                return redirect('/cancel')  
+        except stripe.error.StripeError as e:
+            return JsonResponse({'error': str(e)}, status=400)
+    
+    else:
+        return redirect('/cancel')
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('/login_page')
 
 def user(request):
-
-    orders = Order.objects.all().filter(owner=request.user.id)
+    menu = request.GET.get('menu', None)
+    orders = Order.objects.all().filter(owner=request.user.id).order_by('-orderDate')
 
     context = {
-        'orders': orders
+        'orders': orders,
+        'menu': menu,
+        'user': request.user
     }
 
     template = loader.get_template('store/user.html')
@@ -206,7 +228,7 @@ def create(request):
               'card'
             ],
             mode='payment',
-            success_url = YOUR_DOMAIN + '/success?orderNumber=' + str(order.orderNumber),
+            success_url = YOUR_DOMAIN + '/success?session_id={CHECKOUT_SESSION_ID}' + '&orderNumber=' + str(order.orderNumber),
             cancel_url=YOUR_DOMAIN + '/cancel',
         )
 

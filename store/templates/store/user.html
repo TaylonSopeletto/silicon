@@ -10,38 +10,73 @@
 <body>
     {% include "store/main/includes/header/index.html" %}
     <div class="flex w-[90%] max-w-[1440px] mx-auto">
-        <div class="w-[30%] flex flex-col bg-gray-200 p-10 gap-10 text-center">
-            <a class="hover:underline" href="/profile">My Profile</a>
-            <a class="hover:underline" href="/orders">Orders</a>
+        <div class="w-[30%]">
+            <p class="text-xl py-10">Menu</p>
+            <ul class="flex flex-col gap-5">
+                <a class="hover:underline {% if menu == 'profile' %}font-bold{% endif %}" href="/user?menu=profile">Profile</a>
+                <a class="hover:underline {% if menu == 'orders' %}font-bold{% endif %}" href="/user?menu=orders">Orders</a>
+                <a class="hover:underline" href="/logout">Log out</a>
+            </ul>
         </div>
-        <div class="w-[70%] flex flex-col py-2 m-10">
-            <h2 class="pb-10 font-bold text-xl">My Orders</h2>
-            <div class="flex flex-col gap-5">
-                {% for order in orders %}
-                <div class="flex flex-col gap-5 border border-[#ddd] p-8">
-                    <div class="flex justify-between">
-                        <p>Order:</p>
-                        <p class="font-bold">#{{ order.orderNumber|slice:":5" }}</p>
+        <div class="w-[70%] flex flex-col">
+            {% if menu == 'profile' %}
+                <h2 class="py-10 font-bold text-xl">My Profile</h2>
+                <div class="grid grid-cols-2 gap-5">
+                    <div class="flex flex-col gap-2">
+                        <label>First Name:</label>
+                        <input readonly value="{{user.first_name}}" class="cursor-not-allowed outline-none p-4 bg-[#f5f5f5] border border-[#f5f5f5]" name="username" placeholder="John">
                     </div>
-                    <div class="flex justify-between">
-                        <p>Payment Status:</p>
-                        <p class="font-bold">{{order.paymentStatus}}</p>
-                    </div>
-                    <div class="flex justify-between">
-                        <p>Products:</p>
-                        <ul>
-                            {% for product in order.products.all %}
-                                <li>{{ product.name }}</li> 
-                            {% endfor %}
-                        </ul>
-                    </div>
-                    <div class="flex justify-between">
-                        <p>Total price:</p>
-                        <p class="font-bold">{{order.totalPrice}}$</p>
+                    <div class="flex flex-col gap-2">
+                        <label>Last Name:</label>
+                        <input readonly value="{{user.last_name}}" class="cursor-not-allowed outline-none p-4 bg-[#f5f5f5] border border-[#f5f5f5]" name="username" placeholder="Doe">
                     </div>
                 </div>
-                {% endfor %}
-            </div>
+                <div class="grid grid-cols-2 gap-5 mt-10">
+                    <div class="flex flex-col gap-2 col-span-full">
+                        <label>Email:</label>
+                        <input readonly value="{{user.email}}" class="cursor-not-allowed outline-none p-4 bg-[#f5f5f5] border border-[#f5f5f5]" name="username" placeholder="john@doe.com">
+                    </div>
+                </div>
+                <p class="mt-10">Contact our <a class="hover:underline text-gray-400" href="/user?menu=support">support</a> to update personal data information</p>
+            {% endif %}
+            
+            {% if menu == 'orders' %}
+                <h2 class="py-10 font-bold text-xl">My Orders</h2>
+                <div class="flex flex-col gap-5">
+                    {% if not orders %}
+                        <p>No orders yet</p>
+                    {% else %}
+                        {% for order in orders %}
+                        <div class="flex flex-col gap-5 border border-[#ddd] p-8">
+                            <div class="flex justify-between">
+                                <p>Order:</p>
+                                <p class="font-bold">#{{ order.orderNumber|slice:":5" }}</p>
+                            </div>
+                            <div class="flex justify-between">
+                                <p>Order Date:</p>
+                                <p>{{ order.orderDate }}</p>
+                            </div>
+                            <div class="flex justify-between">
+                                <p>Payment Status:</p>
+                                <p class="font-bold">{{order.paymentStatus}}</p>
+                            </div>
+                            <div class="flex justify-between">
+                                <p>Products:</p>
+                                <ul>
+                                    {% for product in order.products.all %}
+                                        <li>{{ product.name }}</li> 
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="flex justify-between">
+                                <p>Total price:</p>
+                                <p class="font-bold">${{order.totalPrice}}</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            {% endif %}
         </div>
     </div>
     <script src="{% static 'dist/cart.bundle.js' %}"></script>
