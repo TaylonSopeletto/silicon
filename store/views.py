@@ -32,17 +32,12 @@ def product(request, product_id):
     return HttpResponse(template.render(context, request))
 
 def login_page(request):
-
-    context = {}
-
     template = loader.get_template('store/login.html')
-    return HttpResponse(template.render(context, request))
+    return HttpResponse(template.render(request))
 
 def cancel_payment(request):
-    context = {}
-
     template = loader.get_template('store/cancel.html')
-    return HttpResponse(template.render(context, request))
+    return HttpResponse(template.render(request))
 
 def success_payment(request):
     session_id = request.GET.get('session_id')
