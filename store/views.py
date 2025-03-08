@@ -33,7 +33,7 @@ def product(request, product_id):
 
 def login_page(request):
     template = loader.get_template('store/login.html')
-    return HttpResponse(template.render(request))
+    return HttpResponse(template.render({}, request))
 
 def cancel_payment(request):
     template = loader.get_template('store/cancel.html')
@@ -104,7 +104,7 @@ def create_user(request):
 
 def register_page(request):
     template = loader.get_template('store/register.html')
-    return HttpResponse(template.render(request))
+    return HttpResponse(template.render({}, request))
 
 def authentication(request):
     username = request.POST['username']
