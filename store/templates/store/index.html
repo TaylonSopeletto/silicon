@@ -28,7 +28,7 @@
         {% include "store/main/includes/header/index.html" %}
         {% include "store/main/includes/bread-crumb/index.html" %}
         {% include "store/main/includes/tool-bar/index.html" %}
-        <div class="w-[90%] max-w-[1440px] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-[10px]"">
+        <div class="mb-4 w-[90%] max-w-[1440px] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-[10px]"">
             {% for product in products %}
             <a href="product/{{product.publicId}}"" class="border border-gray-200 hover:cursor-pointer hover:shadow-[0px_0px_4px_2px_rgba(0,_0,_0,_0.1)]">
                 <div class="h-[250px] w-full">
