@@ -38,14 +38,22 @@
         width: 100% !important;
         background: rgba(255, 255, 255, 0.9);
         backdrop-filter: blur(5px);
-        
-        
     }
 </style>
 <header class="bg-gray-800 pb-5">
     <div class="w-[90%] max-w-[1440px] mx-auto max-w-[1440px] mx-auto flex flex-col md:flex-row gap-10 md:gap-0 justify-between items-center  min-h-[100px] text-white">
         <div class="md:hidden mb-auto flex justify-between w-full md:w-auto pt-4">
-            <button class="hover:text-gray-300"><a href="/user?menu=profile"><i class="fas fa-user mr-2"></i>{{user.username}}</a></button>
+            <button class="hover:text-gray-300">
+                {% if user.is_authenticated %}
+                    <a href="/user?menu=profile">
+                        <i class="fas fa-user mr-2"></i>{{user.username}}
+                    </a>
+                {% else %}
+                    <a href="/login_page">
+                        <i class="fas fa-sign-in-alt mr-2"></i>Sign In
+                    </a>
+                {% endif %}
+            </button>
             <button class="hover:text-gray-300"><a href="/cart"><i class="mr-2 fas fa-shopping-cart"></i>Cart</a></button>
         </div>
         <a href="/" class="flex items-center gap-2 no-underline text-white">
@@ -63,7 +71,17 @@
         
         <div class="hidden items-center md:flex gap-5 justify-between w-full md:w-auto border-solid border-t-1 md:border-0 border-gray-400">
             <button class="hover:text-gray-300"><a href="/cart"><i class="mr-2 fas fa-shopping-cart"></i>Cart</a></button>
-            <button class="hover:text-gray-300"><a href="/user?menu=profile"><i class="fas fa-user mr-2"></i>{{user.username}}</a></button>
+            <button class="hover:text-gray-300">
+                {% if user.is_authenticated %}
+                    <a href="/user?menu=profile">
+                        <i class="fas fa-user mr-2"></i>{{user.username}}
+                    </a>
+                {% else %}
+                    <a href="/login_page">
+                        <i class="fas fa-sign-in-alt mr-2"></i>Sign In
+                    </a>
+                {% endif %}
+            </button>
         </div>
     </div>
 </header>
@@ -98,7 +116,6 @@
     const closeButton = document.getElementById('close-button')
 
     openButton.addEventListener("click", () => {
-        console.log('foi')
         menuOverlay.classList.add('menu-opened')
     })
 
