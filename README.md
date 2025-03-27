@@ -4,8 +4,11 @@
 
 ### set up django for the first time ###
 
-windows `venv\Scripts\activate`
-mac / linux `source venv/bin/activate`
+## python virtual env
+`python3 -m venv venv`
+`source venv/bin/activate`
+
+## install project requirements
 
 `pip install -r requirements.txt`
 
